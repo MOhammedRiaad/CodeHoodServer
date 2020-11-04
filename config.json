@@ -1,0 +1,4 @@
+﻿{
+    "connectionString": "mongodb+srv://admin:Admin123@codehood.pszio.mongodb.net/Mentors?retryWrites=true&w=majority",
+    "secret": "mohammedriaad"
+}
