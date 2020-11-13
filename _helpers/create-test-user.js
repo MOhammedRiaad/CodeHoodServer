@@ -3,7 +3,7 @@ const bcrypt = require('bcryptjs');
 
 const db = require('./db');
 
-module.exports = {createTestUser ,createTestLogin};
+module.exports = {createTestUser ,createTestLogin ,createTestSkills};
 
 async function createTestUser() {
     // create test user if the db is empty
@@ -12,7 +12,7 @@ async function createTestUser() {
             name: "test",
             title: "Front End developer",
             message: "I can help you answer questions and explain difficuilt systems in simple terms.",
-            skills: ["test", "test", "test" ,"test"],
+            skills: "5fa9b1cbd2cafa447c83ba7c",
             countryAlpha2Code: "EG",
             country: "Egypt",
             twitter: "test"
@@ -31,5 +31,15 @@ async function createTestLogin() {
             role: Role.Admin
         });
         await user.save();
+    }
+}
+async function createTestSkills() {
+    // create test user if the db is empty
+    if ((await db.Skills.countDocuments({})) === 0) {
+        const skill = new db.Skills({
+            name: 'HTML',
+            
+        });
+        await skill.save();
     }
 }

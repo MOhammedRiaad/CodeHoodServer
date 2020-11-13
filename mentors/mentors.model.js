@@ -4,8 +4,11 @@ const Schema = mongoose.Schema;
 const schema = new Schema({
     name: { type: String, required: true },
     title: { type: String, required: false },
-    message: { type: String, unique: true, required: false },
-    skills: { type: Array, required: false },
+    message: { type: String, required: false },
+    skills: [{ 
+        type: mongoose.Schema.Types.ObjectId,
+        ref:'Skills',
+         required: false }],
     countryAlpha2Code: { type: String, required: false },
     country: { type: String, required: false },
     twitter: { type: String, required: false },

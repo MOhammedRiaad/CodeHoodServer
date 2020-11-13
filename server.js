@@ -10,6 +10,7 @@ const errorHandler = require('_middleware/error-handler');
 const createTestUser = require('_helpers/create-test-user');
 createTestUser.createTestUser();
 createTestUser.createTestLogin();
+createTestUser.createTestSkills();
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());

@@ -26,7 +26,7 @@ async function addUser({ name , title , message ,skills,countryAlpha2Code,countr
         
     });
          await user.save();
-         return 'user created successfully '
+         return //'user created successfully '
         }
         else
         {
@@ -40,7 +40,7 @@ async function addUser({ name , title , message ,skills,countryAlpha2Code,countr
 
 
 async function getAll() {
-    const users = await db.Mentors.find();
+    const users = await db.Mentors.find().populate('skills');
     return users.map(x => basicDetails(x));
 }
 
