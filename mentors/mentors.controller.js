@@ -7,6 +7,7 @@ const userService = require('./mentors.service');
 router.get('/',  getAll);
 router.get('/:id',  getById);
 router.post('/CreateUser', CreateUser);
+router.post('/updateMessage', updateMessage);
 module.exports = router;
 
 
@@ -35,6 +36,12 @@ function getById(req, res, next) {
         .catch(next);
 }
 
+function updateMessage(req,res,next){
+
+    const data = req.body
+    userService.updateMessage(data).then(data => res.json(data))
+    .catch(next)
+}
 
 // helper functions
 

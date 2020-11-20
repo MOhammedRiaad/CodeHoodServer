@@ -5,6 +5,7 @@ module.exports = {
     getAll,
     getById,
     addUser,
+    updateMessage
 };
 
 
@@ -14,7 +15,7 @@ async function addUser({ name , title , message ,skills,countryAlpha2Code,countr
     const user = await db.Mentors.findOne({ name });
     if (!user) {
        
-    const user = new db.Mentors({
+        const user = new db.Mentors({
         name: name,
         title: title,
         message: message,
@@ -24,13 +25,11 @@ async function addUser({ name , title , message ,skills,countryAlpha2Code,countr
         twitter: twitter
 
         
-    });
+         });
          await user.save();
          return //'user created successfully '
-        }
-        else
-        {
-            throw 'Username Is found by try another one ';
+     }else{
+            throw 'Username Is found try another one';
 
         }
        
@@ -62,5 +61,15 @@ async function getUser(id) {
 function basicDetails(user) {
     const {id, name , title , message ,skills,countryAlpha2Code,country,twitter } = user;
     return {id, name , title , message ,skills,countryAlpha2Code,country,twitter };
+}
+
+async function updateMessage(request){
+
+    const user = await db.Mentors.findOneAndUpdate({_id : request.id},
+         {$set :{
+            message : request.message
+         }},{new : true},
+    ) ;
+return user
 }
 
